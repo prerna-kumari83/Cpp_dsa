@@ -1,46 +1,64 @@
 #include <iostream>
-#include <vector>
 #include <string>
+
 using namespace std;
 
-void solve(vector<int>num,vector<vector<int>> &ans,int index){
 
-    //bace case 
+void reverseStr(string &str,int s,int e){
 
-    if(index>=num.size()){
-        ans.push_back(num);
+    if(s>=e){
+
         return ;
 
     }
+    else{
 
-
-    for(int i=index;i<num.size();i++){
-
-        swap(num[index],num[i]);
-        solve(num,ans,index+1);
-    
-        swap(num[i],num[index]);
+        swap(str[s],str[e]);
+        reverseStr(str,s+1,e-1);
     }
+}
+
+bool isPalindrom(string str ,int s,int e){
+    if(s>=e){
+        return true;
+    }
+
+
+    if(str[s]!=str[e]){
+        return false;
+    }
+    else{
+        return isPalindrom(str,s+1,e-1);
+    }
+
 
 
 }
 
 
+ 
 
 
 int main(){
-     
-    vector<int> num={1,2,3};
 
-    vector <vector<int>> ans;
-    int index=0;
-    solve(num,ans,index);
-    for(int i=0;i<ans.size();i++){
-        for(int j=0;j<ans[i].size();j++){
-            cout<<ans[i][j] <<" ";
-        }
-        cout<<endl;
+    string  name="appleelpp9";     // char name[6] = "prerna";  // Correct way to store a string in a character array.
+
+    int n=name.length();
+
+    // cout<<"before:"<<name<<endl;
+    // reverseStr(name,0,name.length()-1);
+    // cout<<"After:"<<name;
+
+    if(isPalindrom(name,0,n-1))
+    {
+
+        cout<<"palindrom";
     }
+    else
+    {
+        cout<<" Not palindrom";
+    }
+
 
 
 }
